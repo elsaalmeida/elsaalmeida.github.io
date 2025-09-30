@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>João Almeida - E-Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #2c5f7c 0%, #3a7ca5 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #3a7ca5 0%, #2c5f7c 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .hero-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            border: 5px solid white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            background: linear-gradient(135deg, #d4a574 0%, #e8c4a0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #b8dff0;
+            font-weight: 300;
+        }
+
+        .quote-box {
+            background: rgba(255,255,255,0.1);
+            border-left: 4px solid #81c784;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 700px;
+            font-style: italic;
+            backdrop-filter: blur(10px);
+        }
+
+        .quote-box p {
+            margin-bottom: 0.5rem;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-size: 0.9rem;
+            color: #b8dff0;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Sections */
+        section {
+            background: white;
+            margin-bottom: 2rem;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+
+        section h2 {
+            color: #2c5f7c;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #81c784;
+        }
+
+        section h3 {
+            color: #3a7ca5;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+        }
+
+        section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #3a7ca5;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .card h4 {
+            color: #2c5f7c;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            padding: 1.5rem;
+            background: #f9f9f9;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #81c784;
+        }
+
+        .timeline-year {
+            color: #2c5f7c;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-block;
+            background: #3a7ca5;
+            color: white;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+            margin-top: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #2c5f7c;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .gallery-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Blog Posts */
+        .blog-post {
+            background: #f9f9f9;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #81c784;
+        }
+
+        .blog-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-post h3 {
+            color: #2c5f7c;
+            margin: 0.5rem 0 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            margin-top: 1rem;
+        }
+
+        .contact-info a {
+            color: #81c784;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Lists */
+        ul.content-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul.content-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        ul.content-list li:before {
+            content: "▸";
+            color: #81c784;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            section {
+                padding: 2rem 1.5rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre Mim</a></li>
+            <li><a href="#mestrado">Mestrado</a></li>
+            <li><a href="#projetos">Projetos em Grupo</a></li>
+            <li><a href="#reflexoes">Reflexões</a></li>
+            <li><a href="#recursos">Recursos Digitais</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero" id="inicio">
+        <div class="hero-image">JP</div>
+        <h1>João Pereira</h1>
+        <p class="subtitle">Professor de História & Eterno Aprendiz</p>
+        <p>Bem-vindo ao meu e-portfólio. Sou apaixonado por dar vida ao passado e dedicado a criar experiências de aprendizado envolventes e baseadas na investigação para meus alunos.</p>
+        
+        <div class="quote-box">
+            <p>"O passado nunca está morto. Nem sequer é passado."</p>
+            <p class="quote-author">- William Faulkner</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- About Me Section -->
+        <section id="sobre">
+            <h2>Sobre Mim</h2>
+            <p><strong>Nome:</strong> João Pereira</p>
+            <p><strong>Cidade:</strong> Póvoa de Lanhoso, Braga, Portugal</p>
+            
+            <h3>Formação Académica</h3>
+            <ul class="content-list">
+                <li>Licenciatura em Ciência Política</li>
+                <li>Licenciatura em Relações Internacionais</li>
+                <li>Mestrado em Ensino de História (em curso)</li>
+            </ul>
+
+            <h3>Experiência Profissional e Voluntária</h3>
+            <p>Ao longo da minha trajetória, tenho desenvolvido competências em diversas áreas relacionadas com a educação, investigação histórica e participação cívica. Acredito que a educação histórica é fundamental para formar cidadãos críticos e informados, capazes de compreender o presente através das lentes do passado.</p>
+
+            <h3>Participação Institucional</h3>
+            <p>Tenho participado ativamente em projetos académicos e institucionais que promovem o diálogo interdisciplinar e a inovação pedagógica no ensino da História.</p>
+
+            <h3>Interesses Pessoais</h3>
+            <ul class="content-list">
+                <li>História Contemporânea e suas conexões com o presente</li>
+                <li>Pedagogia crítica e metodologias ativas de ensino</li>
+                <li>Tecnologias educacionais e ambientes digitais de aprendizagem</li>
+                <li>Literatura histórica e documentários</li>
+            </ul>
+
+            <h3>Objetivo Profissional</h3>
+            <p>O meu objetivo é tornar-me professor de História, inspirando os meus alunos a desenvolver pensamento crítico, curiosidade genuína pela história e competências de investigação que os capacitem a tornarem-se cidadãos informados e engajados.</p>
+        </section>
+
+        <!-- Master's Section -->
+        <section id="mestrado">
+            <h2>Mestrado em Ensino de História</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">Ano 1</div>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>Didática da História I</h4>
+                            <p>Exploração das metodologias de ensino da História, com foco em estratégias pedagógicas inovadoras e no desenvolvimento do pensamento histórico.</p>
+                            <a href="#" class="btn">Ver Trabalhos</a>
+                        </div>
+                        <div class="card">
+                            <h4>História Contemporânea</h4>
+                            <p>Análise crítica dos principais eventos e processos históricos dos séculos XX e XXI, com ênfase nas suas implicações no presente.</p>
+                            <a href="#" class="btn">Ver Trabalhos</a>
+                        </div>
+                        <div class="card">
+                            <h4>Metodologia da Investigação</h4>
+                            <p>Desenvolvimento de competências de investigação histórica, incluindo análise de fontes, escrita académica e metodologias qualitativas.</p>
+                            <a href="#" class="btn">Ver Trabalhos</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">Ano 2</div>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>Didática da História II</h4>
+                            <p>Aprofundamento das práticas pedagógicas, com foco em avaliação, planificação e gestão de sala de aula.</p>
+                            <a href="#" class="btn">Ver Trabalhos</a>
+                        </div>
+                        <div class="card">
+                            <h4>Ambientes Digitais em História</h4>
+                            <p>Exploração de ferramentas e recursos digitais para o ensino da História, incluindo plataformas colaborativas e recursos multimédia.</p>
+                            <a href="#" class="btn">Ver Trabalhos</a>
+                        </div>
+                        <div class="card">
+                            <h4>Prática Pedagógica Supervisionada</h4>
+                            <p>Experiência prática em contexto escolar, aplicando metodologias aprendidas e desenvolvendo competências docentes.</p>
+                            <a href="#" class="btn">Ver Trabalhos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Estrutura dos Trabalhos por Disciplina</h3>
+            <p>Para cada disciplina, disponibilizo os seguintes materiais:</p>
+            <ul class="content-list">
+                <li>Descrição do curso e objetivos de aprendizagem</li>
+                <li>Trabalhos desenvolvidos (PDFs, links, imagens)</li>
+                <li>Reflexão crítica sobre a aprendizagem e aplicação prática</li>
+                <li>Conexões interdisciplinares e relevância para a prática docente</li>
+            </ul>
+        </section>
+
+        <!-- Group Projects Section -->
+        <section id="projetos">
+            <h2>Projetos em Grupo - Ambientes Digitais em História</h2>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <h4>Projeto 1: Plataforma Digital Interativa</h4>
+                    <p><strong>Descrição:</strong> Desenvolvimento de uma plataforma digital colaborativa para explorar eventos históricos através de recursos multimédia e interativos.</p>
+                    
+                    <h5 style="margin-top: 1.5rem;">Processo:</h5>
+                    <p>O projeto foi desenvolvido em equipa, utilizando metodologias ágeis e ferramentas de colaboração online. Cada membro contribuiu com investigação, design e implementação técnica.</p>
+                    
+                    <h5>Reflexão do Grupo:</h5>
+                    <p>Este projeto permitiu-nos compreender a importância da colaboração interdisciplinar e do uso criativo de tecnologias educacionais.</p>
+                    
+                    <h5>Autoavaliação e Avaliação de Pares:</h5>
+                    <p>Através de processos reflexivos, identificámos pontos fortes e áreas de melhoria, tanto individuais como coletivas.</p>
+                    
+                    <a href="#" class="btn">Ver Projeto Completo</a>
+                </div>
+
+                <div class="card">
+                    <h4>Projeto 2: Arquivo Digital de Memórias Locais</h4>
+                    <p><strong>Descrição:</strong> Criação de um arquivo digital de história oral, preservando memórias e narrativas da comunidade local através de entrevistas e documentação multimédia.</p>
+                    
+                    <h5 style="margin-top: 1.5rem;">Processo:</h5>
+                    <p>Realizámos entrevistas com membros da comunidade, digitalizámos documentos históricos e criámos uma plataforma acessível para preservação e partilha dessas memórias.</p>
+                    
+                    <h5>Reflexão do Grupo:</h5>
+                    <p>O projeto evidenciou o valor da história local e da preservação da memória coletiva como ferramentas pedagógicas poderosas.</p>
+                    
+                    <h5>Autoavaliação e Avaliação de Pares:</h5>
+                    <p>As avaliações destacaram a importância da sensibilidade cultural e da ética na investigação histórica com comunidades.</p>
+                    
+                    <a href="#" class="btn">Ver Projeto Completo</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reflections Section -->
+        <section id="reflexoes">
+            <h2>Reflexões Pessoais</h2>
+            
+            <div class="blog-post">
+                <div class="blog-date">Setembro 2025</div>
+                <h3>O Desafio de Ensinar História no Século XXI</h3>
+                <p>Neste texto, reflito sobre os desafios e oportunidades de ensinar História numa era digital, onde os alunos têm acesso instantâneo a informação mas nem sempre às competências críticas necessárias para a interpretar. Como podemos, enquanto professores, orientar os jovens a distinguir facto de opinião, a compreender contextos e a desenvolver empatia histórica?</p>
+                <p>Acredito que a chave está em criar experiências de aprendizagem que conectem o passado ao presente, que façam os alunos questionar, investigar e construir as suas próprias narrativas históricas.</p>
+            </div>
+
+            <div class="blog-post">
+                <div class="blog-date">Agosto 2025</div>
+                <h3>Aprender a Desaprender: A Jornada do Mestrado</h3>
+                <p>O mestrado tem sido uma jornada de desconstrução e reconstrução. Tenho aprendido não apenas conteúdos e metodologias, mas também a questionar as minhas próprias conceções sobre o ensino e a aprendizagem.</p>
+                <p>Descobri que ser professor não é apenas transmitir conhecimento, mas facilitar descobertas, estimular a curiosidade e criar espaços seguros para o erro e a experimentação. Esta reflexão tem transformado a minha visão sobre a educação.</p>
+            </div>
+
+            <div class="blog-post">
+                <div class="blog-date">Julho 2025</div>
+                <h3>Ideias Pedagógicas: História como Investigação</h3>
+                <p>Uma das ideias que mais me entusiasma é transformar a sala de aula num laboratório de investigação histórica. Em vez de simplesmente apresentar factos, podemos guiar os alunos através de processos de investigação autênticos, utilizando fontes primárias, debates e projetos colaborativos.</p>
+                <p>Este método não apenas desenvolve pensamento crítico, mas também torna a História viva, relevante e profundamente pessoal para cada aluno.</p>
+            </div>
+        </section>
+
+        <!-- Digital Resources Section -->
+        <section id="recursos">
+            <h2>Portfólio de Recursos Digitais</h2>
+            <p>Aqui partilho uma seleção de ferramentas e recursos digitais que considero valiosos para o ensino da História.</p>
+
+            <div class="gallery">
+                <div class="gallery-item">
+                    <div class="gallery-icon">🎥</div>
+                    <h4>Vídeos Educativos</h4>
+                    <p>Curadoria de documentários e vídeos que contextualizam eventos históricos de forma envolvente.</p>
+                    <p><small>Uso pedagógico: Introdução a temas, debate e análise crítica de fontes audiovisuais.</small></p>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-icon">🗺️</div>
+                    <h4>Mapas Interativos</h4>
+                    <p>Ferramentas de visualização geográfica que permitem explorar mudanças territoriais e movimentos históricos.</p>
+                    <p><small>Uso pedagógico: Análise espacial de eventos históricos e compreensão de contextos geopolíticos.</small></p>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-icon">📚</div>
+                    <h4>Arquivos Digitais</h4>
+                    <p>Acesso a documentos históricos primários digitalizados para investigação em sala de aula.</p>
+                    <p><small>Uso pedagógico: Trabalho direto com fontes, desenvolvimento de competências de análise documental.</small></p>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-icon">🎮</div>
+                    <h4>Jogos Educativos</h4>
+                    <p>Simulações e jogos que permitem aos alunos experienciar decisões e dilemas históricos.</p>
+                    <p><small>Uso pedagógico: Empatia histórica, compreensão de complexidade e múltiplas perspetivas.</small></p>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-icon">📊</div>
+                    <h4>Ferramentas de Visualização de Dados</h4>
+                    <p>Plataformas para criar cronologias, infográficos e visualizações de dados históricos.</p>
+                    <p><small>Uso pedagógico: Análise de tendências, comparações e representação visual de informação complexa.</small></p>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-icon">💬</div>
+                    <h4>Plataformas Colaborativas</h4>
+                    <p>Espaços online para trabalho em grupo, discussões e partilha de recursos.</p>
+                    <p><small>Uso pedagógico: Projetos colaborativos, debates online e construção coletiva de conhecimento.</small></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Optional Extras -->
+        <section>
+            <h2>Extras</h2>
+            
+            <h3>Cronologia do Percurso Académico e Profissional</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2020-2023</div>
+                    <p>Licenciatura em Ciência Política e Relações Internacionais</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2024-Presente</div>
+                    <p>Mestrado em Ensino de História</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2025</div>
+                    <p>Prática Pedagógica Supervisionada</p>
+                </div>
+            </div>
+
+            <h3>Áreas de Interesse em História</h3>
+            <ul class="content-list">
+                <li>História Contemporânea (Séculos XX e XXI)</li>
+                <li>História Política e Relações Internacionais</li>
+                <li>História Social e Movimentos Sociais</li>
+                <li>História Local e Memória Coletiva</li>
+                <li>Didática da História e Inovação Pedagógica</li>
+            </ul>
+
+            <h3>Leituras e Inspirações</h3>
+            <p>Alguns autores e obras que têm influenciado o meu pensamento sobre educação histórica:</p>
+            <ul class="content-list">
+                <li>Paulo Freire - "Pedagogia do Oprimido"</li>
+                <li>Eric Hobsbawm - "Era dos Extremos"</li>
+                <li>Peter Lee - Sobre educação histórica e pensamento crítico</li>
+                <li>Isabel Barca - Didática da História em Portugal</li>
+            </ul>
+
+            <h3>Futuro Professor: A Minha Visão sobre o Ensino</h3>
+            <p>Acredito que ensinar História é muito mais do que transmitir datas e eventos. É ajudar os alunos a compreenderem como chegámos até aqui, a questionarem narrativas estabelecidas e a desenvolverem competências de pensamento crítico essenciais para participarem ativamente numa sociedade democrática.</p>
+            <p>Quero ser o tipo de professor que inspira curiosidade, que encoraja o debate respeitoso, que valoriza múltiplas perspetivas e que prepara os seus alunos não apenas para testes, mas para a vida. A História deve ser uma ferramenta de emancipação, não de memorização passiva.</p>
+            <p>O meu compromisso é criar experiências de aprendizagem significativas, onde cada aluno se sinta valorizado e capacitado para construir o seu próprio entendimento do passado e do presente.</p>
+        </section>
+    </div>
+
+    <!-- Footer/Contact -->
+    <footer id="contato">
+        <h2>Contato</h2>
+        <div class="contact-info">
+            <p>📧 Email: <a href="mailto:joao.pereira@exemplo.pt">joao.pereira@exemplo.pt</a></p>
+            <p>💼 LinkedIn: <a href="#" target="_blank">linkedin.com/in/joaopereira</a></p>
+            <p>🔗 ORCID: <a href="#" target="_blank">orcid.org/0000-0000-0000-0000</a></p>
+        </div>
+        <p style="margin-top: 2rem;">© 2024 João Pereira. Todos os Direitos Reservados.</p>
+        <p style="font-size: 0.9rem; margin-top: 1rem;">Estou ansioso pela possibilidade de nos conectarmos.</p>
+    </footer>
+</body>
+</html>
